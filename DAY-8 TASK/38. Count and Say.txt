@@ -1,0 +1,29 @@
+38. Count and Say
+class Solution {
+    public String countAndSay(int n) {
+        String result="1";
+        for(int i=1;i<n;i++){
+            String op=recursive(result);
+            result=op;
+        }
+        return result;
+    }
+    String recursive(String res){
+        int len=res.length();
+        int i=1;
+        int count=1;
+        String r="";
+        while(i<len){
+            if(res.charAt(i)==res.charAt(i-1)){
+                count++;
+            }
+            else{
+                r = r + count + res.charAt(i-1);
+                count=1;
+            }
+            i++;
+        }
+        r=r+count+res.charAt(len-1);
+        return r;
+    }
+}
